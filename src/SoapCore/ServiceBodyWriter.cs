@@ -30,7 +30,7 @@ namespace SoapCore
 		protected override void OnWriteBodyContents(XmlDictionaryWriter writer)
 		{
 			// do not wrap old-style single element response into additional xml element for xml serializer
-			var needResponseEnvelope = _serializer != SoapSerializer.XmlSerializer || _result == null || (_outResults != null && _outResults.Count > 0);
+			var needResponseEnvelope = true || _serializer != SoapSerializer.XmlSerializer || _result == null || (_outResults != null && _outResults.Count > 0);
 
 			if (needResponseEnvelope)
 				writer.WriteStartElement(_envelopeName, _serviceNamespace);
